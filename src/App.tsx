@@ -8,12 +8,17 @@ import { ScenePreview } from './ScenePreview'
 import { ProfileExtras } from './ProfileExtras'
 import { RpgStats } from './RpgStats'
 import { DatingGame } from './game/DatingGame'
-import { SnailEffectsProvider } from './snail/SnailEffects'
+import { SnailEffectsProvider, HeaderSoundControl } from './snail/SnailEffects'
 import { FinanzamtProvider } from './finanzamt/Finanzamt'
 import { SecretSteamLibraryProvider } from './steam/SecretSteamLibrary'
 import './styles.css'
 import './profile-extras.css'
 import './media-cards.css'
+import { MemePopupProvider } from './humor/MemePopup'
+import { CharacterCard } from './humor/CharacterCard'
+import { IdealPartner } from './humor/IdealPartner'
+import { MigFavoriteCard } from './easter-eggs/MigFavoriteCard'
+import { ScrollVoiceMessage } from './easter-eggs/ScrollVoiceMessage'
 
 const photos = images.photos.map((image, index) => ({
   ...image,
@@ -47,6 +52,7 @@ function Favorites({ game = false }: { game?: boolean }) {
       <p>{game ? item.gameNote : item.description}</p>
       </div>
     </motion.article>)}
+    {!game&&<MigFavoriteCard/>}
   </div>
 }
 
@@ -57,7 +63,7 @@ function Reveal({ children, className = '' }: { children: React.ReactNode; class
 
 function Header() {
   const [open, setOpen] = useState(false)
-  return <header className="site-header"><div className="shell nav"><Link to="/" className="brand" aria-label="На головну"><span className="brand-icon">N<span>♡</span></span><span>NIKKONI<span className="brand-sub">LOVE IS WAR</span></span></Link><nav aria-label="Головна навігація" className={open ? 'nav-links mobile-open' : 'nav-links'}><a href="/#about" onClick={() => setOpen(false)}>Хто цей хлопець?</a><a href="/#stats" onClick={() => setOpen(false)}>Характеристики</a><a href="/#gallery" onClick={() => setOpen(false)}>Галерея</a><Link to="/game" onClick={() => setOpen(false)}>Симулятор <span className="tiny-badge">PLAY</span></Link></nav><a className="nav-cta" href="/#apply">Познайомитись <Heart size={15}/></a><button className="menu-button icon-button" onClick={() => setOpen(!open)} aria-label={open ? 'Закрити меню' : 'Відкрити меню'} aria-expanded={open}>{open ? <X/> : <Menu/>}</button></div></header>
+  return <header className="site-header"><div className="shell nav"><Link to="/" className="brand" aria-label="На головну"><span className="brand-icon">N<span>♡</span></span><span>NIKKONI<span className="brand-sub">LOVE IS WAR</span></span></Link><nav aria-label="Головна навігація" className={open ? 'nav-links mobile-open' : 'nav-links'}><a href="/#about" onClick={() => setOpen(false)}>Хто цей хлопець?</a><a href="/#stats" onClick={() => setOpen(false)}>Характеристики</a><a href="/#gallery" onClick={() => setOpen(false)}>Галерея</a><Link to="/game" onClick={() => setOpen(false)}>Симулятор <span className="tiny-badge">PLAY</span></Link></nav><HeaderSoundControl/><a className="nav-cta" href="/#apply">Познайомитись <Heart size={15}/></a><button className="menu-button icon-button" onClick={() => setOpen(!open)} aria-label={open ? 'Закрити меню' : 'Відкрити меню'} aria-expanded={open}>{open ? <X/> : <Menu/>}</button></div></header>
 }
 
 function Home() {
@@ -102,13 +108,13 @@ function Home() {
         <Reveal><Favorites/><div className="fandom-note"><Sparkles size={19}/><p><b>Oshi no Ko / «Зоряне дитя» — культове аніме Дениса.</b><br/>Хошіно Ай — ідол серця, але любов до самого аніме має власний VIP-абонемент. «Євангеліон» залишається класикою, а Violet Evergarden відкриває нову емоційну арку.</p></div></Reveal>
       </section>
 
-      <section id="stats" className="shell section"><Reveal className="section-heading"><div><div className="section-label">03 / БІЛД ДЛЯ СТОСУНКІВ</div><h2>Характеристики <span>героя</span></h2></div><span className="section-side">БАЛАНСУ НЕ БУЛО. Є ХАРИЗМА.</span></Reveal><div className="stats-layout"><Reveal className="glass character-card"><div className="character-symbol">♡<span>LVL 18</span></div><h3>Фембой-стратег</h3><p>Клас: романтик далекої дії</p><div className="character-meta"><span>Стихія <b>Аніме</b></span><span>Рідкість <b className="pink">Легендарний ✦</b></span></div><div className="character-perk"><Sparkles size={18}/><span>Пасивна здібність<br/><b>«Лист від Віолети: броня −100»</b></span></div></Reveal><Reveal><RpgStats legacy={heroStats}/></Reveal></div></section>
+      <section id="stats" className="shell section"><Reveal className="section-heading"><div><div className="section-label">03 / БІЛД ДЛЯ СТОСУНКІВ</div><h2>Характеристики <span>героя</span></h2></div><div className="stats-side"><span className="section-side">БАЛАНСУ НЕ БУЛО. Є ХАРИЗМА.</span><p className="stats-click-hint">Натисни на характеристику, щоб розкрити секретні дані</p></div></Reveal><div className="stats-layout"><Reveal><CharacterCard/></Reveal><Reveal><RpgStats legacy={heroStats}/></Reveal></div></section>
 
       <section id="gallery" className="shell section"><Reveal className="section-heading"><div><div className="section-label">04 / ФОТОДОКАЗИ ІСНУВАННЯ</div><h2>Денис <span>у кадрі</span></h2></div><p className="section-side">СПРАВЖНІ ФОТО. ТОЙ САМИЙ ЛЕГЕНДАРНИЙ ДЕНИС.</p></Reveal><div className="gallery">{photos.map((photo, i) => <Reveal key={photo.src}><button className="gallery-item" onClick={() => setSelected(i)} aria-label={`Відкрити: ${photo.title}`}><div className="gallery-image"><SiteImage src={photo.src} alt={photo.caption} width={photo.width} height={photo.height} loading="lazy" decoding="async"/><span className="photo-number">{String(i + 1).padStart(2, '0')}</span><span className="photo-expand"><Plus size={22}/></span></div><div className="gallery-caption"><h3>{photo.title}</h3><ArrowUpRight size={19}/></div><p>{photo.caption}</p></button></Reveal>)}</div></section>
 
       <ProfileExtras/>
 
-      <section id="waifu" className="shell section"><Reveal className="waifu-panel"><div className="waifu-art" aria-hidden="true"><div className="waifu-orbit"/><span className="waifu-kanji">愛</span><span className="waifu-heart">♡</span><span className="waifu-art-caption">REAL CONNECTION &gt; PERFECT CHARACTER</span></div><div className="waifu-content"><div className="section-label">05 / КОСПЛЕЙ НЕ Є ВИМОГОЮ</div><h2>Ідеальна <span>половинка</span></h2><p>Рей — стара легенда. Віолета — нова емоційна слабкість. Хошіно Ай — ідол серця. А поруч із Денисом є місце для справжньої людини, зі своїм характером і власною аркою.</p><ul className="waifu-list"><li><Check/> Повнолітня та з почуттям гумору</li><li><Check/> Поважає його інтереси й має власні</li><li><Check/> Може слухати про Oshi no Ko — або чесно попросити паузу</li><li><Check/> Запросить на каву без конкурсу на найкращу Віолету</li></ul><div className="waifu-bottom">Головний критерій: <b>бути собою.</b> <Heart size={16}/></div></div></Reveal></section>
+      <section id="waifu" className="shell section"><Reveal><IdealPartner/></Reveal></section>
 
       <section className="shell game-section"><Reveal><Link to="/game" className="game-banner"><span className="game-icon"><Gamepad2 size={33}/></span><div><span className="section-label">ПОВНОЦІННА VISUAL NOVEL · 7 КІНЦІВОК</span><h2>Чи зможеш ти витягнути Дениса<br/>з кімнати на побачення?</h2><p>Шість епізодів, симпатія, довіра й самокат за 800 €. Рей береже класику, Віолета атакує почуття, Ай вмикає фан-режим. Почати гру →</p></div><span className="game-arrow"><ArrowUpRight size={29}/></span></Link></Reveal></section>
 
@@ -135,5 +141,5 @@ function ScrollToRoute() {
 function NotFound() { return <main className="coming-soon shell"><h1>404</h1><p>Ця арка ще не написана.</p><Link className="button primary" to="/">До анкети Дениса <ArrowUpRight size={18}/></Link></main> }
 function Footer() { return <footer className="shell footer"><Link className="footer-brand" to="/">NIKKONI NIPUTIZU<span>LOVE IS WAR. АЛЕ МОЖНА Й БЕЗ ВІЙНИ.</span></Link><p>Гумористична анкета · 18+<br/>Зроблено з ♡ та легким крінжем.</p><a href="/#apply">Твоя арка починається тут <ArrowUpRight size={15}/></a></footer> }
 export default function App() {
-  return <BrowserRouter><SnailEffectsProvider><FinanzamtProvider><SecretSteamLibraryProvider><ScrollToRoute/><Header/><Routes><Route path="/" element={<Home/>}/><Route path="/game" element={<Game/>}/><Route path="*" element={<NotFound/>}/></Routes><Footer/></SecretSteamLibraryProvider></FinanzamtProvider></SnailEffectsProvider></BrowserRouter>
+  return <BrowserRouter><SnailEffectsProvider><MemePopupProvider><FinanzamtProvider><SecretSteamLibraryProvider><ScrollToRoute/><Header/><ScrollVoiceMessage/><Routes><Route path="/" element={<Home/>}/><Route path="/game" element={<Game/>}/><Route path="*" element={<NotFound/>}/></Routes><Footer/></SecretSteamLibraryProvider></FinanzamtProvider></MemePopupProvider></SnailEffectsProvider></BrowserRouter>
 }

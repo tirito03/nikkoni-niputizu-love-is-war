@@ -1,0 +1,410 @@
+{
+  "verifiedOn": "2026-11-07",
+  "notice": "Каталог мемних ефектів містить 8 записів користувача та 3 CC0-ефекти. Доданий голос clubochkom має окремі метадані в clubochkom.source.json. Походження й ліцензії користувацьких записів незалежно не підтверджені.",
+  "originalRestrictionSource": "https://legal.gaijin.net/contentrules",
+  "processing": "Користувацькі аудіофайли не перекодовано й не обрізано. Перевірено декодування; за потреби гучні піки послаблюються плеєром із запасом -3 dBFS.",
+  "sounds": [
+    {
+      "id": "hit-machinegun",
+      "src": "/sounds/hit-machinegun.mp3",
+      "label": "ПОПАДАНИЕ В ПУЛЕМЁТ",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "hit-machinegun.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "previousAsset": {
+        "sha256": "ed7b2c91d7359705d57e8b2b56df2b87ee8a9e059e903091fad1cf2d5e477ce0",
+        "license": "CC0-1.0",
+        "sources": [
+          {
+            "author": "Brian MacIntosh (BMacZero)",
+            "sourcePage": "https://opengameart.org/content/metal-impact-sounds",
+            "files": [
+              "clink1_0.wav",
+              "clink2.wav",
+              "clink3.wav"
+            ],
+            "download": "https://opengameart.org/sites/default/files/clink1_0.wav",
+            "sourceSha256": {
+              "clink1_0.wav": "0d439cd2b1f36f501b94c39661e39f91d160affe25c79f77dff7a2cd0ed7eadd",
+              "clink2.wav": "ecbf5a221f2aff32376b8584eea875d0b7d9963d22f6c16e237f5e7b63f51dc2",
+              "clink3.wav": "dd07516e51e9092efc36d13668de7d29d096955a437894cedeb5064933e2650f"
+            }
+          }
+        ]
+      },
+      "duration": 2.438,
+      "peakDbfs": -0.18,
+      "rmsDbfs": -7.64,
+      "bytes": 54022,
+      "sha256": "f630f32b084976a68dd1a94e203d4445c9baceefd62a32528290bdae127a4340"
+    },
+    {
+      "id": "non-penetration",
+      "src": "/sounds/non-penetration.mp3",
+      "label": "НЕ ПРОБИЛ",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "non-penetration.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "previousAsset": {
+        "sha256": "2c029870e875f58e16f75ad0bd52e5d1a70265e60e9219b3a345fab483da0bf6",
+        "license": "CC0-1.0",
+        "sources": [
+          {
+            "author": "Brian MacIntosh (BMacZero)",
+            "sourcePage": "https://opengameart.org/content/metal-impact-sounds",
+            "files": [
+              "bong1.wav"
+            ],
+            "download": "https://opengameart.org/sites/default/files/bong1.wav",
+            "sourceSha256": {
+              "bong1.wav": "a6558d186f2843aefa212d567963b0ad79a6f78614bcf650f519620fc1549a6d"
+            }
+          }
+        ]
+      },
+      "duration": 1.541,
+      "peakDbfs": -12.23,
+      "rmsDbfs": -24.52,
+      "bytes": 63885,
+      "sha256": "bd9ee421422719528f3d7ff67945aad39343d64ff621f0a0d27a8a55a2ae8170"
+    },
+    {
+      "id": "ricochet",
+      "src": "/sounds/ricochet.mp3",
+      "label": "РИКОШЕТ",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "ricochet.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "previousAsset": {
+        "sha256": "bade119c8c32fac7592b0ee5840c93ead5f6af8d4dd29a8bca862c8c18c9fe74",
+        "license": "CC0-1.0",
+        "sources": [
+          {
+            "author": "Brian MacIntosh (BMacZero)",
+            "sourcePage": "https://opengameart.org/content/metal-impact-sounds",
+            "files": [
+              "bing1.wav"
+            ],
+            "download": "https://opengameart.org/sites/default/files/bing1.wav",
+            "sourceSha256": {
+              "bing1.wav": "d14941ce27e6b409e0cd941eaad7201d613070a4c3eb9c3627fec4cf3ae686e4"
+            }
+          }
+        ]
+      },
+      "duration": 1.959,
+      "peakDbfs": -0.07,
+      "rmsDbfs": -15.34,
+      "bytes": 23658,
+      "sha256": "3a6a16eb2ccc83c52410cda5f1df84c3995191a34228d51b19d68973bc36c030"
+    },
+    {
+      "id": "hit",
+      "src": "/sounds/hit.mp3",
+      "label": "ПОПАДАНИЕ",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "hit.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "previousAsset": {
+        "sha256": "64f03c2a73e05e774ed943cde6db9c780342e1017c6706e24ec8a9ad83ff51cc",
+        "license": "CC0-1.0",
+        "sources": [
+          {
+            "author": "Brian MacIntosh (BMacZero)",
+            "sourcePage": "https://opengameart.org/content/metal-impact-sounds",
+            "files": [
+              "thud3.wav"
+            ],
+            "download": "https://opengameart.org/sites/default/files/thud3.wav",
+            "sourceSha256": {
+              "thud3.wav": "3aa636679ffdc9602d27655ca59a7c7342ae137b68e54c61aad0fb3c414506ca"
+            }
+          }
+        ]
+      },
+      "duration": 7.895,
+      "peakDbfs": -11.15,
+      "rmsDbfs": -33.77,
+      "bytes": 79743,
+      "sha256": "425e5d7644018dada846f35a8d80f614b375d44945ffd446e86a31543e47799c"
+    },
+    {
+      "id": "tank-shot",
+      "src": "/sounds/tank-shot.mp3",
+      "label": "Танковий постріл — вибуховий аналог",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "originalWarThunder": false,
+      "spokenRussian": false,
+      "sources": [
+        {
+          "author": "rubberduck",
+          "sourcePage": "https://opengameart.org/content/25-cc0-bang-firework-sfx",
+          "download": "https://opengameart.org/sites/default/files/25-CC0-bang-sfx.zip",
+          "files": [
+            "cannon_02.ogg"
+          ],
+          "sourceSha256": {
+            "cannon_02.ogg": "716392af61b29dabe637c2616091207f390d25357aae3d4c625df5dfea7e961d"
+          }
+        }
+      ],
+      "changes": "Запис феєрверкового вибуху із набору автора; не запис танка і не War Thunder. Обрізано тишу, зведено в моно, нормалізовано рівень, додано короткі згасання, конвертовано в MP3.",
+      "duration": 1.573,
+      "peakDbfs": -8.38,
+      "rmsDbfs": -30.66,
+      "bytes": 26438,
+      "sha256": "b1b2f1637f2b6e3db68bc688d6788302ca35c229b90f647a56e406eb6bd1e7f2"
+    },
+    {
+      "id": "explosion",
+      "src": "/sounds/explosion.mp3",
+      "label": "Вибух — запис феєрверка",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "originalWarThunder": false,
+      "spokenRussian": false,
+      "sources": [
+        {
+          "author": "rubberduck",
+          "sourcePage": "https://opengameart.org/content/25-cc0-bang-firework-sfx",
+          "download": "https://opengameart.org/sites/default/files/25-CC0-bang-sfx.zip",
+          "files": [
+            "fw_04.ogg"
+          ],
+          "sourceSha256": {
+            "fw_04.ogg": "48c5f564ebba962c3f54cd6bc6d4d958c47e9a795aabe8a91643afaa9fdf4c11"
+          }
+        }
+      ],
+      "changes": "Обрізаний запис феєрверкового вибуху, використаний як атмосферний аналог. Обрізано тишу, зведено в моно, нормалізовано рівень, додано короткі згасання, конвертовано в MP3.",
+      "duration": 2.263,
+      "peakDbfs": -8.52,
+      "rmsDbfs": -38.34,
+      "bytes": 37305,
+      "sha256": "3d2fc4457b0650b789e4602e170e612089c8542e9db2e16779d9c83a97a35533"
+    },
+    {
+      "id": "achievement",
+      "src": "/sounds/achievement.mp3",
+      "label": "Отримання нагороди",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "originalWarThunder": false,
+      "spokenRussian": false,
+      "sources": [
+        {
+          "author": "SkyleTheFrench",
+          "sourcePage": "https://opengameart.org/content/achievement-awarded-sfx",
+          "download": "https://opengameart.org/sites/default/files/achievement_get.ogg",
+          "files": [
+            "achievement_get.ogg"
+          ],
+          "sourceSha256": {
+            "achievement_get.ogg": "d0db5f1c2ca974ebc1df7f0f2894f970014c8ece673db0314b34bd5253deabee"
+          }
+        }
+      ],
+      "changes": "Скорочено початок мелодії нагороди; не звук War Thunder. Обрізано тишу, зведено в моно, нормалізовано рівень, додано короткі згасання, конвертовано в MP3.",
+      "duration": 3.5,
+      "peakDbfs": -11.79,
+      "rmsDbfs": -25.46,
+      "bytes": 56949,
+      "sha256": "52c58e6a2464547bad0919116fbbe17568e99dc59a475bcb1722b2e8621721ab"
+    },
+    {
+      "id": "rpu-warning",
+      "src": "/sounds/rpu-warning.mp3",
+      "label": "РПУ / секретна реакція Равлика",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "rpu-warning.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "previousAsset": {
+        "sha256": "79b88ed5f9064cf47817caac2cc147cba89f6cff4890e24205816eb76dc29630",
+        "license": "CC0-1.0",
+        "sources": [
+          {
+            "author": "yd",
+            "sourcePage": "https://opengameart.org/content/short-alarm",
+            "download": "https://opengameart.org/sites/default/files/alarm_0.ogg",
+            "files": [
+              "alarm_0.ogg"
+            ],
+            "sourceSha256": {
+              "alarm_0.ogg": "dc76a67748c9cef0b91913fafbe47cf8ee4499c4f813dbe12e028d2806f1eab8"
+            }
+          }
+        ]
+      },
+      "duration": 19.691,
+      "peakDbfs": -7.9,
+      "rmsDbfs": -21.78,
+      "bytes": 254127,
+      "sha256": "0310bf822891a1af2b15727b98ad5250dd01815d637fb2ef3793689f622c629b"
+    },
+    {
+      "id": "snail-blessing",
+      "src": "/sounds/snail-blessing.mp3",
+      "label": "Благословення Равлика",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "snail-blessing.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "previousAsset": {
+        "sha256": "324df2a1e78b61bda2830a6f73c049f70dd80e7063037c1f8ebc2348ea7e9651",
+        "license": "CC0-1.0",
+        "sources": [
+          {
+            "author": "SkyleTheFrench",
+            "sourcePage": "https://opengameart.org/content/achievement-awarded-sfx",
+            "download": "https://opengameart.org/sites/default/files/achievement_get.ogg",
+            "files": [
+              "achievement_get.ogg"
+            ],
+            "sourceSha256": {
+              "achievement_get.ogg": "d0db5f1c2ca974ebc1df7f0f2894f970014c8ece673db0314b34bd5253deabee"
+            }
+          }
+        ]
+      },
+      "duration": 16.904,
+      "peakDbfs": -4.07,
+      "rmsDbfs": -11.69,
+      "bytes": 330369,
+      "sha256": "85e01ace58b8cc2d6aa75ef2872bf10b29f31e076497e9da091390a76b7e2f9f"
+    },
+    {
+      "id": "snail-curse",
+      "src": "/sounds/snail-curse.mp3",
+      "label": "Прокляття Равлика",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "snail-curse.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "previousAsset": {
+        "sha256": "d6a85b8fb141682534de9975da0ef96b237ca7ef5fa2951f004a42da7359a0e2",
+        "license": "CC0-1.0",
+        "sources": [
+          {
+            "author": "Brian MacIntosh (BMacZero)",
+            "sourcePage": "https://opengameart.org/content/metal-impact-sounds",
+            "files": [
+              "thud2.wav"
+            ],
+            "download": "https://opengameart.org/sites/default/files/thud2.wav",
+            "sourceSha256": {
+              "thud2.wav": "5fb5c1b37a95cb6716d0bb529a0b9fe1ae9f3e2228b8f30c5c3dcbb1b570a3af"
+            }
+          },
+          {
+            "author": "yd",
+            "sourcePage": "https://opengameart.org/content/short-alarm",
+            "download": "https://opengameart.org/sites/default/files/alarm_0.ogg",
+            "files": [
+              "alarm_0.ogg"
+            ],
+            "sourceSha256": {
+              "alarm_0.ogg": "dc76a67748c9cef0b91913fafbe47cf8ee4499c4f813dbe12e028d2806f1eab8"
+            }
+          }
+        ]
+      },
+      "duration": 57.992,
+      "peakDbfs": -5.8,
+      "rmsDbfs": -22.42,
+      "bytes": 636323,
+      "sha256": "74eadfaa4d22fee1935fe893012bf5007c00dd1fe3a0021ceb927f4f0addc97f"
+    },
+    {
+      "id": "hit-pazik",
+      "src": "/sounds/hit-pazik.mp3",
+      "label": "ПОПАДАНИЕ В ПАЗИК",
+      "license": "LicenseRef-UserProvided-Unverified",
+      "licenseUrl": null,
+      "originalWarThunder": null,
+      "spokenRussian": null,
+      "sources": [
+        {
+          "origin": "user-provided local file",
+          "files": [
+            "hit-pazik.mp3"
+          ]
+        }
+      ],
+      "changes": "Файл наданий користувачем. Звуковий вміст і байти не змінено; для ПАЗика виправлено подвійне розширення. Походження й ліцензія незалежно не підтверджені.",
+      "duration": 15.282,
+      "peakDbfs": -20.17,
+      "rmsDbfs": -31.78,
+      "bytes": 220215,
+      "sha256": "3ee1b64acb7289b5e84700a61d811c1fb3de68ca5e2c5eee0fd2dd80fface899"
+    }
+  ]
+}

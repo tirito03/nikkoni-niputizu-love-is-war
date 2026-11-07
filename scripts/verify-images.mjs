@@ -3,7 +3,7 @@ import path from 'node:path'
 import assert from 'node:assert/strict'
 
 const manifest = JSON.parse(await fs.readFile('src/data/images.json', 'utf8'))
-const images = [manifest.hero, ...manifest.photos, ...manifest.scenes, manifest.turms, manifest.steamHistory, ...manifest.characters, ...Object.values(manifest.games)]
+const images = [manifest.mig29, manifest.hero, ...manifest.photos, ...manifest.scenes, manifest.turms, manifest.steamHistory, ...manifest.characters, ...Object.values(manifest.games)]
 const available = (await fs.readdir('public/images')).filter(name => /^photo.*\.(png|jpe?g|webp|avif)$/i.test(name)).sort()
 assert.deepEqual(manifest.photos.map(image => path.basename(image.src)).sort(), available, 'Gallery must include every photo… image')
 for (const image of images) {
@@ -39,4 +39,4 @@ for (const image of images) {
     console.log(`OK ${image.srcSet} (optimized)`)
   }
 }
-console.log(`Verified ${images.length} images: portrait, ${manifest.photos.length} photos, ${manifest.scenes.length} scenes, TURMS reward, 3 official Steam covers and 3 anime characters.`)
+console.log(`Verified ${images.length} images: MiG-29, portrait, ${manifest.photos.length} photos, ${manifest.scenes.length} scenes, TURMS reward, 3 official Steam covers and 3 anime characters.`)

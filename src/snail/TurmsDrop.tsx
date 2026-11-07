@@ -34,9 +34,9 @@ export function TurmsDrop({ eventId, onClose, onAccept, onPrayAgain, fallbackFoc
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') { event.preventDefault(); callbacks.current.onClose(); return }
       if (event.key !== 'Tab' || event.ctrlKey || event.metaKey || event.altKey) return
-      const buttons = Array.from(dialog.current?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)') ?? [])
+      const buttons = Array.from(dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), summary, a[href]') ?? []).filter(element => element.getClientRects().length > 0)
       const first = buttons[0], last = buttons[buttons.length-1]
-      if (!buttons.includes(document.activeElement as HTMLButtonElement)) { event.preventDefault(); (event.shiftKey ? last : first)?.focus() }
+      if (!buttons.includes(document.activeElement as HTMLElement)) { event.preventDefault(); (event.shiftKey ? last : first)?.focus() }
       else if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus() }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus() }
     }

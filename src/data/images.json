@@ -1,32 +1,146 @@
 {
   "characters": [
-    { "src": "/images/rei-ayanami.png", "srcSet": "/images/rei-ayanami.webp", "width": 900, "height": 506 },
-    { "src": "/images/violet-evergarden.png", "srcSet": "/images/violet-evergarden.webp", "width": 800, "height": 420 },
-    { "src": "/images/ai-hoshino.png", "srcSet": "/images/ai-hoshino.webp", "width": 500, "height": 900 }
+    {
+      "src": "/images/rei-ayanami.png",
+      "srcSet": "/images/rei-ayanami.webp",
+      "width": 900,
+      "height": 506
+    },
+    {
+      "src": "/images/violet-evergarden.png",
+      "srcSet": "/images/violet-evergarden.webp",
+      "width": 800,
+      "height": 420
+    },
+    {
+      "src": "/images/ai-hoshino.png",
+      "srcSet": "/images/ai-hoshino.webp",
+      "width": 500,
+      "height": 900
+    }
   ],
   "games": {
-    "hoi4": { "src": "/images/hoi4-cover.png", "srcSet": "/images/hoi4-cover.webp", "width": 460, "height": 215 },
-    "warThunder": { "src": "/images/war-thunder-cover.png", "srcSet": "/images/war-thunder-cover.webp", "width": 460, "height": 215 }
+    "hoi4": {
+      "src": "/images/hoi4-cover.png",
+      "srcSet": "/images/hoi4-cover.webp",
+      "width": 460,
+      "height": 215
+    },
+    "warThunder": {
+      "src": "/images/war-thunder-cover.png",
+      "srcSet": "/images/war-thunder-cover.webp",
+      "width": 460,
+      "height": 215
+    }
   },
-  "steamHistory": { "src": "/images/sex-with-stalin.png", "width": 460, "height": 215 },
-  "turms": { "src": "/images/turms.png", "width": 562, "height": 284 },
-  "hero": { "src": "/images/denis-hero.png.jpg", "width": 960, "height": 1280 },
+  "steamHistory": {
+    "src": "/images/sex-with-stalin.png",
+    "width": 460,
+    "height": 215
+  },
+  "turms": {
+    "src": "/images/turms.png",
+    "width": 562,
+    "height": 284
+  },
+  "hero": {
+    "src": "/images/denis-hero.png.jpg",
+    "width": 960,
+    "height": 1280
+  },
   "photos": [
-    { "src": "/images/photo_2026-11-06_20-42-25.jpg", "width": 591, "height": 1280 },
-    { "src": "/images/photo_2026-11-06_20-42-30.jpg", "width": 332, "height": 348 },
-    { "src": "/images/photo_2026-11-06_20-42-32.jpg", "width": 720, "height": 1280 },
-    { "src": "/images/photo_2026-11-06_20-42-36.jpg", "width": 720, "height": 1280 },
-    { "src": "/images/photo_2026-11-06_20-42-40.jpg", "width": 576, "height": 807 },
-    { "src": "/images/photo_2026-11-06_20-42-44.jpg", "width": 576, "height": 1280 },
-    { "src": "/images/photo_2026-11-06_20-42-47.jpg", "width": 720, "height": 1280 },
-    { "src": "/images/photo_2026-11-06_20-42-58.jpg", "width": 591, "height": 1280 },
-    { "src": "/images/photo_2026-11-06_20-43-09.jpg", "width": 825, "height": 1100 },
-    { "src": "/images/photo_2026-11-06_20-43-13.jpg", "width": 727, "height": 794 },
-    { "src": "/images/photo_2026-11-06_20-43-20.jpg", "width": 960, "height": 1280 }
+    {
+      "src": "/images/photo_2026-11-06_20-42-25.jpg",
+      "width": 591,
+      "height": 1280
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-42-30.jpg",
+      "width": 332,
+      "height": 348
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-42-32.jpg",
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-42-36.jpg",
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-42-40.jpg",
+      "width": 576,
+      "height": 807
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-42-44.jpg",
+      "width": 576,
+      "height": 1280
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-42-47.jpg",
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-42-58.jpg",
+      "width": 591,
+      "height": 1280
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-43-09.jpg",
+      "width": 825,
+      "height": 1100
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-43-13.jpg",
+      "width": 727,
+      "height": 794
+    },
+    {
+      "src": "/images/photo_2026-11-06_20-43-20.jpg",
+      "width": 960,
+      "height": 1280
+    }
   ],
   "scenes": [
-    { "id": "room", "src": "/images/game-room.png.png", "width": 1672, "height": 941, "title": "Кімната Дениса", "label": "01 / Початкова сцена", "alt": "Згенерований арт: Денис біля комп’ютера в рожево-фіолетовій аніме-кімнаті", "description": "Стартова локація. Oshi no Ko тримає оборону, Рей береже класику, а лист від Віолети поки проходить перевірку на емоційний урон." },
-    { "id": "scooter", "src": "/images/game-scooter.png.png", "width": 1672, "height": 941, "title": "Самокат за 800 €", "label": "02 / Дорогий аргумент", "alt": "Згенерований арт: Денис поруч з електросамокатом із цінником 800 €", "description": "Електросамокат за 800 €. Транспорт до побачення чи новий фінальний бос бюджету? Хошіно Ай вже очолює уявний фан-клуб цієї покупки." },
-    { "id": "good-ending", "src": "/images/gamge-good-ending.pn.png", "width": 1672, "height": 941, "title": "Щаслива кінцівка", "label": "03 / Love wins", "alt": "Згенерований арт щасливої кінцівки: усміхнений Денис із манґою, кавою та десертами", "description": "Кава є. Манґа є. Денис усміхається. Рей лишається легендою, Віолета — емоційною слабкістю, Ай — ідолом. А твоя арка нарешті отримує happy end." }
-  ]
+    {
+      "id": "room",
+      "src": "/images/game-room.png.png",
+      "width": 1672,
+      "height": 941,
+      "title": "Кімната Дениса",
+      "label": "01 / Початкова сцена",
+      "alt": "Згенерований арт: Денис біля комп’ютера в рожево-фіолетовій аніме-кімнаті",
+      "description": "Стартова локація. Oshi no Ko тримає оборону, Рей береже класику, а лист від Віолети поки проходить перевірку на емоційний урон."
+    },
+    {
+      "id": "scooter",
+      "src": "/images/game-scooter.png.png",
+      "width": 1672,
+      "height": 941,
+      "title": "Самокат за 800 €",
+      "label": "02 / Дорогий аргумент",
+      "alt": "Згенерований арт: Денис поруч з електросамокатом із цінником 800 €",
+      "description": "Електросамокат за 800 €. Транспорт до побачення чи новий фінальний бос бюджету? Хошіно Ай вже очолює уявний фан-клуб цієї покупки."
+    },
+    {
+      "id": "good-ending",
+      "src": "/images/gamge-good-ending.pn.png",
+      "width": 1672,
+      "height": 941,
+      "title": "Щаслива кінцівка",
+      "label": "03 / Love wins",
+      "alt": "Згенерований арт щасливої кінцівки: усміхнений Денис із манґою, кавою та десертами",
+      "description": "Кава є. Манґа є. Денис усміхається. Рей лишається легендою, Віолета — емоційною слабкістю, Ай — ідолом. А твоя арка нарешті отримує happy end."
+    }
+  ],
+  "mig29": {
+    "src": "/images/mig-29.jpg",
+    "srcSet": "/images/mig-29.webp",
+    "width": 1600,
+    "height": 874
+  }
 }

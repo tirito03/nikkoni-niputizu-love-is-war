@@ -1,87 +1,58 @@
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useId, useRef, useState, type ReactNode } from 'react'
+import { useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useInView, useReducedMotion } from 'motion/react'
-import { ShieldAlert, Volume2, VolumeX, X } from 'lucide-react'
+import { Settings2, ShieldAlert, Volume2, VolumeX, X } from 'lucide-react'
 import { randomOther, rpuMessages } from './memes'
+import { LocalSoundPlayer } from '../audio/LocalSoundPlayer'
+import { AudioFocus } from '../audio/AudioFocus'
+import { soundLabels, type SoundId } from '../audio/sounds'
 import './snail.css'
+import '../audio/audio-controls.css'
 
-const SOUND_KEY = 'nikkoni-snail-sound-v1'
-type Effects = { soundEnabled: boolean; soundNotice: string; toggleSound: () => void; triggerRpu: () => void; playNotification: () => void; playReward: () => void }
-const EffectsContext = createContext<Effects | null>(null)
-export function useSnailEffects() {
-  const context = useContext(EffectsContext)
-  if (!context) throw Error('Snail effects require their provider')
-  return context
+const SOUND_KEY='nikkoni-snail-sound-v1', VOLUME_KEY='nikkoni-snail-volume-v1'
+export function readVolume(){try{const raw=localStorage.getItem(VOLUME_KEY);if(raw===null)return .4;const value=Number(raw);return Number.isFinite(value)?Math.max(0,Math.min(1,value)):.4}catch{return .4}}
+type Effects={soundEnabled:boolean;soundNotice:string;volume:number;lastSound:SoundId|null;setVolume:(value:number)=>void;toggleSound:()=>void;triggerRpu:()=>void;playNotification:()=>void;playReward:()=>void;playSound:(id:SoundId)=>void;stopSounds:()=>void;claimAudio:(pause:()=>void)=>()=>void}
+const EffectsContext=createContext<Effects|null>(null)
+export function useSnailEffects(){const context=useContext(EffectsContext);if(!context)throw Error('Snail effects require their provider');return context}
+export function SnailEffectsProvider({children}:{children:ReactNode}){
+  const [soundEnabled,setSoundEnabled]=useState(()=>{try{return localStorage.getItem(SOUND_KEY)==='on'}catch{return false}})
+  const [volume,setVolumeState]=useState(readVolume)
+  const [soundNotice,setSoundNotice]=useState('')
+  const [lastSound,setLastSound]=useState<SoundId|null>(null)
+  const [alertId,setAlertId]=useState(0),[visible,setVisible]=useState(false)
+  const player=useRef<LocalSoundPlayer|null>(null)
+  if(!player.current)player.current=new LocalSoundPlayer(setSoundNotice,setLastSound)
+  const audioFocus=useRef<AudioFocus|null>(null)
+  if(!audioFocus.current)audioFocus.current=new AudioFocus(()=>player.current?.stop())
+  const enabledRef=useRef(soundEnabled),volumeRef=useRef(volume)
+  enabledRef.current=soundEnabled;volumeRef.current=volume
+  const reduced=useReducedMotion(),{pathname}=useLocation()
+  useEffect(()=>{player.current!.configure(soundEnabled,volume)},[soundEnabled,volume])
+  useEffect(()=>()=>{audioFocus.current?.stopAll();player.current?.dispose()},[])
+  useEffect(()=>{audioFocus.current?.stopAll()},[pathname])
+  useEffect(()=>{const stopHidden=()=>{if(document.hidden)audioFocus.current?.stopAll()};document.addEventListener('visibilitychange',stopHidden);return()=>document.removeEventListener('visibilitychange',stopHidden)},[])
+  useEffect(()=>{if(!visible)return;const timer=window.setTimeout(()=>setVisible(false),4200);return()=>window.clearTimeout(timer)},[visible,alertId])
+  const playSound=useCallback((id:SoundId)=>{audioFocus.current?.beforeBuiltin();void player.current?.play(id)},[])
+  const stopSounds=useCallback(()=>audioFocus.current?.stopAll(),[])
+  const claimAudio=useCallback((pause:()=>void)=>audioFocus.current!.claimExternal(pause),[])
+  const toggleSound=()=>{const next=!enabledRef.current;enabledRef.current=next;setSoundEnabled(next);player.current!.configure(next,volumeRef.current);try{localStorage.setItem(SOUND_KEY,next?'on':'off')}catch{};if(next)void player.current!.unlock();else {audioFocus.current?.stopAll();setSoundNotice('')}}
+  const setVolume=(value:number)=>{const next=Number.isFinite(value)?Math.max(0,Math.min(1,value)):.4;volumeRef.current=next;setVolumeState(next);if(next===0)audioFocus.current?.stopAll();player.current!.configure(enabledRef.current,next);try{localStorage.setItem(VOLUME_KEY,String(next))}catch{}}
+  const triggerRpu=()=>{setAlertId(id=>id+1);setVisible(true);playSound('rpu-warning')}
+  const playNotification=()=>playSound('hit')
+  const playReward=()=>playSound('achievement')
+  return <EffectsContext.Provider value={{soundEnabled,soundNotice,volume,lastSound,setVolume,toggleSound,triggerRpu,playNotification,playReward,playSound,stopSounds,claimAudio}}>{children}<AnimatePresence>{visible&&<motion.aside className="rpu-toast" role="status" aria-live="polite" initial={{opacity:reduced?1:0,y:reduced?0:-8}} animate={{opacity:1,y:0}} exit={{opacity:0}} transition={{duration:reduced?0:.2}}><ShieldAlert size={24}/><div><strong className={reduced?'':'rpu-glitch'} key={alertId}>РПУ АКТИВОВАНО</strong><p>Равлик спостерігає. Це мем, а не реальна механіка War Thunder.</p></div><button className="icon-button" aria-label="Закрити попередження РПУ" onClick={()=>{setVisible(false);stopSounds()}}><X size={17}/></button></motion.aside>}</AnimatePresence></EffectsContext.Provider>
 }
-
-export function SnailEffectsProvider({ children }: { children: ReactNode }) {
-  const [soundEnabled, setSoundEnabled] = useState(() => { try { return localStorage.getItem(SOUND_KEY) === 'on' } catch { return false } })
-  const [soundNotice, setSoundNotice] = useState('')
-  const [alertId, setAlertId] = useState(0)
-  const [visible, setVisible] = useState(false)
-  const audio = useRef<AudioContext | null>(null)
-  const activeTone = useRef<OscillatorNode | null>(null)
-  const soundAllowed = useRef(soundEnabled)
-  const lastAlarm = useRef(0)
-  const reduced = useReducedMotion()
-  useEffect(() => () => { void audio.current?.close().catch(() => {}); audio.current = null }, [])
-  useEffect(() => {
-    if (!visible) return
-    const timer = window.setTimeout(() => setVisible(false), 4200)
-    return () => window.clearTimeout(timer)
-  }, [visible, alertId])
-  const playAlarm = async (kind: 'alert' | 'reward' = 'alert') => {
-    // Short synthesized sound; no audio download, autoplay or permanent loop.
-    if (Date.now() - lastAlarm.current < 900) return
-    lastAlarm.current = Date.now()
-    try {
-      if (!window.AudioContext) { setSoundNotice('Цей браузер не підтримує звуки. Візуальні ефекти працюють.'); return }
-      const context = audio.current ?? new AudioContext()
-      audio.current = context
-      await context.resume()
-      if (!soundAllowed.current) return
-      const start = context.currentTime
-      const oscillator = context.createOscillator()
-      const gain = context.createGain()
-      oscillator.type = 'sine'
-      oscillator.frequency.setValueAtTime(440, start)
-      oscillator.frequency.setValueAtTime(kind === 'reward' ? 554.37 : 330, start + .16)
-      oscillator.frequency.setValueAtTime(kind === 'reward' ? 659.25 : 440, start + .32)
-      if (kind === 'reward') oscillator.frequency.setValueAtTime(880, start + .43)
-      gain.gain.setValueAtTime(0, start)
-      gain.gain.linearRampToValueAtTime(.045, start + .025)
-      gain.gain.setValueAtTime(.045, start + .4)
-      gain.gain.linearRampToValueAtTime(0, start + .55)
-      oscillator.connect(gain); gain.connect(context.destination)
-      activeTone.current = oscillator
-      oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); if (activeTone.current === oscillator) activeTone.current = null }
-      oscillator.start(start); oscillator.stop(start + .56)
-      setSoundNotice('')
-    } catch { setSoundNotice('Браузер не дозволив звук. Спробуй вимкнути й знову увімкнути його.') }
-  }
-  const toggleSound = () => {
-    const next = !soundEnabled
-    soundAllowed.current = next
-    setSoundEnabled(next)
-    try { localStorage.setItem(SOUND_KEY, next ? 'on' : 'off') } catch { /* Preference still works for this visit. */ }
-    if (next) void playAlarm()
-    else {
-      // Stop the tone rather than pausing it, so unmuting cannot resume an old alarm.
-      if (activeTone.current) { activeTone.current.stop(); activeTone.current.disconnect(); activeTone.current = null }
-      void audio.current?.suspend().catch(() => {}); setSoundNotice('')
-    }
-  }
-  const triggerRpu = () => {
-    setAlertId(id => id + 1); setVisible(true)
-    if (soundEnabled) void playAlarm()
-  }
-  const playNotification = () => { if (soundAllowed.current) void playAlarm() }
-  const playReward = () => { if (soundAllowed.current) void playAlarm('reward') }
-  return <EffectsContext.Provider value={{soundEnabled,soundNotice,toggleSound,triggerRpu,playNotification,playReward}}>{children}<AnimatePresence>{visible && <motion.aside className="rpu-toast" role="status" aria-live="polite" initial={{opacity:reduced ? 1 : 0,y:reduced ? 0 : -8}} animate={{opacity:1,y:0}} exit={{opacity:0}} transition={{duration:reduced ? 0 : .2}}><ShieldAlert size={24}/><div><strong className={reduced ? '' : 'rpu-glitch'} key={alertId}>РПУ АКТИВОВАНО</strong><p>Равлик спостерігає. Це мем, а не реальна механіка War Thunder.</p></div><button className="icon-button" aria-label="Закрити попередження РПУ" onClick={() => setVisible(false)}><X size={17}/></button></motion.aside>}</AnimatePresence></EffectsContext.Provider>
+function VolumeSettings(){
+  const {volume,setVolume,soundEnabled,soundNotice,lastSound,playSound}=useSnailEffects(),id=useId()
+  return <div className="volume-settings"><label htmlFor={id}>Гучність <b>{Math.round(volume*100)}%</b></label><input id={id} type="range" min="0" max="100" step="1" value={Math.round(volume*100)} onChange={event=>setVolume(Number(event.target.value)/100)} aria-label="Гучність звукових ефектів"/><button type="button" disabled={!soundEnabled||volume===0} onClick={()=>playSound('snail-blessing')}>Перевірити звук</button><small>Локальні аудіофайли. Джерела та походження — за посиланням нижче.</small><a href="/sounds/credits.html" target="_blank" rel="noopener noreferrer">Джерела та ліцензії аудіо ↗</a>{lastSound&&<output className="last-sound">Останній ефект: {soundLabels[lastSound]}</output>}{soundNotice&&<p role="status">{soundNotice}</p>}</div>
 }
-
-export function SoundToggle() {
-  const {soundEnabled,soundNotice,toggleSound} = useSnailEffects()
-  return <div className="snail-sound-control"><button className="button ghost" onClick={toggleSound} aria-pressed={soundEnabled}>{soundEnabled ? <Volume2 size={15}/> : <VolumeX size={15}/>}Звук: {soundEnabled ? 'увімкнено' : 'вимкнено'}</button>{soundNotice && <p role="status">{soundNotice}</p>}</div>
+export function SoundToggle(){
+  const {soundEnabled,soundNotice,toggleSound}=useSnailEffects()
+  return <div className="snail-sound-control"><button type="button" className="button ghost" onClick={toggleSound} aria-pressed={soundEnabled}>{soundEnabled?<Volume2 size={15}/>:<VolumeX size={15}/>}Звук: {soundEnabled?'увімкнено':'вимкнено'}</button><details className="sound-settings"><summary>Гучність і джерела</summary><VolumeSettings/></details>{soundNotice&&<p role="status">{soundNotice}</p>}</div>
+}
+export function HeaderSoundControl(){
+  const {soundEnabled,toggleSound}=useSnailEffects()
+  return <div className="header-sound"><button type="button" className="icon-button" onClick={toggleSound} aria-pressed={soundEnabled} aria-label={soundEnabled?'Вимкнути звукові ефекти':'Увімкнути звукові ефекти'} title={soundEnabled?'Звук увімкнено':'Звук вимкнено'}>{soundEnabled?<Volume2 size={17}/>:<VolumeX size={17}/>}</button><details className="header-sound-menu"><summary aria-label="Налаштування гучності"><Settings2 size={14}/></summary><VolumeSettings/></details></div>
 }
 
 export function RpuIndicator({ compact = false }: { compact?: boolean }) {

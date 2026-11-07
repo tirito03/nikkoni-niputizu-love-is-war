@@ -1,0 +1,19 @@
+{
+  "page": "https://ru.uwupad.me/sound/108970",
+  "title": "хозяин я играла с клубочком",
+  "uploader": "kwava",
+  "previewDuration": 26.830726,
+  "checkedAt": "2026-11-07",
+  "rightsStatus": "user-provided; independent license verification unavailable",
+  "installed": true,
+  "expectedLocalFile": "clubochkom.mp3",
+  "reason": null,
+  "terms": "https://uwupad.me/terms",
+  "bytes": 341985,
+  "sha256": "c1942d31679ae96a37ff40f61d8cf3fae9f1e55745e0d90a67298a9693edbcbc",
+  "duration": 26.830729,
+  "peakDbfs": -4.52,
+  "origin": "user-provided local file",
+  "contentVerification": "Файл надано користувачем для цього повідомлення. Не підмінено іншим записом; незалежного підтвердження голосового змісту немає.",
+  "changes": "Виправлено подвійне розширення; звукові байти не змінено."
+}
