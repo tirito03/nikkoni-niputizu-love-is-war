@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useId, useRef, useState, type Rea
 import { useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ScanLine, X } from 'lucide-react'
-import { useSnailEffects } from '../snail/SnailEffects'
 import './finanzamt.css'
 
 const FinanzamtContext = createContext<(() => void) | null>(null)
@@ -18,7 +17,6 @@ export function FinanzamtProvider({ children }: { children: ReactNode }) {
   const closeButton = useRef<HTMLButtonElement>(null)
   const dialog = useRef<HTMLDivElement>(null)
   const returnFocus = useRef<HTMLElement | null>(null)
-  const { playNotification } = useSnailEffects()
   const reduced = useReducedMotion()
   const { pathname, hash } = useLocation()
   const titleId = useId()
@@ -47,7 +45,7 @@ export function FinanzamtProvider({ children }: { children: ReactNode }) {
   }, [visible])
   const open = () => {
     returnFocus.current = document.activeElement as HTMLElement
-    setAudited(false); setVisible(true); playNotification()
+    setAudited(false); setVisible(true)
   }
   return <FinanzamtContext.Provider value={open}>{children}<AnimatePresence>{visible && <motion.div className="finanzamt-overlay" initial={{opacity:reduced ? 1 : 0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:reduced ? 0 : .15}} onClick={() => setVisible(false)}>
     <motion.div className="finanzamt-panel" ref={dialog} role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={descriptionId} initial={{y:reduced ? 0 : 14}} animate={{y:0}} transition={{duration:reduced ? 0 : .2}} onClick={event => event.stopPropagation()}>

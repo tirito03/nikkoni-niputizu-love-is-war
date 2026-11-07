@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Check, ScanLine, Shield, Sparkles, Trash2, Trophy, X } from 'lucide-react'
-import { useSnailEffects } from '../snail/SnailEffects'
 import { randomOther } from '../snail/memes'
 import './economic-event.css'
 
@@ -37,7 +36,6 @@ export function EconomicEventCard() {
   const descriptionId = useId()
   const reduced = useReducedMotion()
   const navigate = useNavigate()
-  const { playNotification } = useSnailEffects()
   const opened = stage !== 'closed'
   const dossierMode = ['connecting','ready','dossier','deleting'].includes(stage)
 
@@ -95,11 +93,11 @@ export function EconomicEventCard() {
   }
   const openQuote = () => {
     opener.current = document.activeElement as HTMLElement
-    countPrice(); setJob(-1); setLawyer(false); setVacancy(false); setStage('quote'); playNotification()
+    countPrice(); setJob(-1); setLawyer(false); setVacancy(false); setStage('quote')
   }
   const report = () => {
     priceClicks.current = 0
-    setLawyer(false); setVacancy(false); setStage('connecting'); playNotification()
+    setLawyer(false); setVacancy(false); setStage('connecting')
   }
 
   return <>
