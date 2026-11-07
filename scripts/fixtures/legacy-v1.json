@@ -1,0 +1,473 @@
+[
+  {
+    "label": "room:dialogue",
+    "raw": "{\"version\":1,\"actions\":[],\"seen\":[],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "room",
+      "phase": "dialogue",
+      "lineIndex": 0,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 20,
+        "trust": 20,
+        "outside": 3
+      },
+      "flags": [],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "room:choice",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "room",
+      "phase": "choice",
+      "lineIndex": 2,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 20,
+        "trust": 20,
+        "outside": 3
+      },
+      "flags": [],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "room:reaction",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "room",
+      "phase": "reaction",
+      "lineIndex": 2,
+      "pendingChoice": "pause",
+      "metrics": {
+        "affection": 32,
+        "trust": 36,
+        "outside": 15
+      },
+      "flags": [
+        "respect"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "anime:dialogue",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "anime",
+      "phase": "dialogue",
+      "lineIndex": 0,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 32,
+        "trust": 36,
+        "outside": 15
+      },
+      "flags": [
+        "respect"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "anime:choice",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "anime",
+      "phase": "choice",
+      "lineIndex": 2,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 32,
+        "trust": 36,
+        "outside": 15
+      },
+      "flags": [
+        "respect"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "anime:reaction",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "anime",
+      "phase": "reaction",
+      "lineIndex": 2,
+      "pendingChoice": "lore",
+      "metrics": {
+        "affection": 48,
+        "trust": 48,
+        "outside": 15
+      },
+      "flags": [
+        "respect",
+        "interest"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "strategy:dialogue",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "strategy",
+      "phase": "dialogue",
+      "lineIndex": 0,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 48,
+        "trust": 48,
+        "outside": 15
+      },
+      "flags": [
+        "respect",
+        "interest"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "strategy:choice",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "strategy",
+      "phase": "choice",
+      "lineIndex": 1,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 48,
+        "trust": 48,
+        "outside": 15
+      },
+      "flags": [
+        "respect",
+        "interest"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "strategy:reaction",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "strategy",
+      "phase": "reaction",
+      "lineIndex": 1,
+      "pendingChoice": "treaty",
+      "metrics": {
+        "affection": 60,
+        "trust": 66,
+        "outside": 39
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "scooter:dialogue",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "scooter",
+      "phase": "dialogue",
+      "lineIndex": 0,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 60,
+        "trust": 66,
+        "outside": 39
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "scooter:choice",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "scooter",
+      "phase": "choice",
+      "lineIndex": 2,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 60,
+        "trust": 66,
+        "outside": 39
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "scooter:reaction",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "scooter",
+      "phase": "reaction",
+      "lineIndex": 2,
+      "pendingChoice": "invoice",
+      "metrics": {
+        "affection": 74,
+        "trust": 78,
+        "outside": 47
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "date:dialogue",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\",\"scooter:reaction:invoice\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "date",
+      "phase": "dialogue",
+      "lineIndex": 0,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 74,
+        "trust": 78,
+        "outside": 47
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "date:choice",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\",\"scooter:reaction:invoice\",\"date:0\",\"date:1\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "date",
+      "phase": "choice",
+      "lineIndex": 1,
+      "pendingChoice": null,
+      "metrics": {
+        "affection": 74,
+        "trust": 78,
+        "outside": 47
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "date:reaction",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"cafe\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\",\"scooter:reaction:invoice\",\"date:0\",\"date:1\"],\"unlocked\":[]}",
+    "expected": {
+      "nodeId": "date",
+      "phase": "reaction",
+      "lineIndex": 1,
+      "pendingChoice": "cafe",
+      "metrics": {
+        "affection": 86,
+        "trust": 90,
+        "outside": 65
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor"
+      ],
+      "ending": null,
+      "unlocked": []
+    }
+  },
+  {
+    "label": "ending:good",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"cafe\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\",\"scooter:reaction:invoice\",\"date:0\",\"date:1\",\"date:reaction:cafe\"],\"unlocked\":[\"good\"]}",
+    "expected": {
+      "nodeId": "date",
+      "phase": "ending",
+      "lineIndex": 1,
+      "pendingChoice": "cafe",
+      "metrics": {
+        "affection": 86,
+        "trust": 90,
+        "outside": 65
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor"
+      ],
+      "ending": "good",
+      "unlocked": [
+        "good"
+      ]
+    }
+  },
+  {
+    "label": "ending:true",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"nikkoni\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\",\"scooter:reaction:invoice\",\"date:0\",\"date:1\",\"date:reaction:nikkoni\"],\"unlocked\":[\"true\"]}",
+    "expected": {
+      "nodeId": "date",
+      "phase": "ending",
+      "lineIndex": 1,
+      "pendingChoice": "nikkoni",
+      "metrics": {
+        "affection": 90,
+        "trust": 94,
+        "outside": 67
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor",
+        "sincere"
+      ],
+      "ending": "true",
+      "unlocked": [
+        "true"
+      ]
+    }
+  },
+  {
+    "label": "ending:secret",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"summit\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\",\"scooter:reaction:invoice\",\"date:0\",\"date:1\",\"date:reaction:summit\"],\"unlocked\":[\"secret\"]}",
+    "expected": {
+      "nodeId": "date",
+      "phase": "ending",
+      "lineIndex": 1,
+      "pendingChoice": "summit",
+      "metrics": {
+        "affection": 79,
+        "trust": 78,
+        "outside": 52
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor"
+      ],
+      "ending": "secret",
+      "unlocked": [
+        "secret"
+      ]
+    }
+  },
+  {
+    "label": "ending:bad",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"treaty\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"invoice\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"returnToBattle\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:treaty\",\"scooter:0\",\"scooter:1\",\"scooter:2\",\"scooter:reaction:invoice\",\"date:0\",\"date:1\",\"date:reaction:returnToBattle\"],\"unlocked\":[\"bad\"]}",
+    "expected": {
+      "nodeId": "date",
+      "phase": "ending",
+      "lineIndex": 1,
+      "pendingChoice": "returnToBattle",
+      "metrics": {
+        "affection": 74,
+        "trust": 78,
+        "outside": 27
+      },
+      "flags": [
+        "respect",
+        "interest",
+        "agreement",
+        "scooterMeme",
+        "humor"
+      ],
+      "ending": "bad",
+      "unlocked": [
+        "bad"
+      ]
+    }
+  },
+  {
+    "label": "ending:hoi4",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"lore\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"coop\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:lore\",\"strategy:0\",\"strategy:1\",\"strategy:reaction:coop\"],\"unlocked\":[\"hoi4\"]}",
+    "expected": {
+      "nodeId": "strategy",
+      "phase": "ending",
+      "lineIndex": 1,
+      "pendingChoice": "coop",
+      "metrics": {
+        "affection": 62,
+        "trust": 58,
+        "outside": 5
+      },
+      "flags": [
+        "respect",
+        "interest"
+      ],
+      "ending": "hoi4",
+      "unlocked": [
+        "hoi4"
+      ]
+    }
+  },
+  {
+    "label": "ending:anime",
+    "raw": "{\"version\":1,\"actions\":[{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"pause\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"advance\"},{\"type\":\"choose\",\"choiceId\":\"marathon\"},{\"type\":\"advance\"}],\"seen\":[\"room:0\",\"room:1\",\"room:2\",\"room:reaction:pause\",\"anime:0\",\"anime:1\",\"anime:2\",\"anime:reaction:marathon\"],\"unlocked\":[\"anime\"]}",
+    "expected": {
+      "nodeId": "anime",
+      "phase": "ending",
+      "lineIndex": 2,
+      "pendingChoice": "marathon",
+      "metrics": {
+        "affection": 52,
+        "trust": 36,
+        "outside": 0
+      },
+      "flags": [
+        "respect"
+      ],
+      "ending": "anime",
+      "unlocked": [
+        "anime"
+      ]
+    }
+  }
+]

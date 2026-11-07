@@ -1,0 +1,37 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env*
+!.env.example
+work/
+outputs/
+
+# Deployment metadata and local caches
+.vercel/
+.vite/
+.cache/
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+
+# Credentials and private configuration
+.npmrc
+.netrc
+secrets/
+.secrets/
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+credentials.json
+credentials.*.json
+service-account*.json
+
+# Local agent/editor state
+.codex/
+.agents/
+.idea/
